@@ -1,1 +1,0 @@
-psql -c "select pronamespace::regnamespace as schema, proname as function_name, pg_get_functiondef(pr.oid) as function_def from pg_proc pr join pg_namespace pn on pr.pronamespace = pn.oid where pn.nspname not in ('pg_toast', 'pg_catalog', 'information_schema') and prokind != 'a';"
