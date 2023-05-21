@@ -1,1 +1,1 @@
-psql -d $database -U $user -c "SELECT current_database();"
+psql -c "SELECT current_database();"
