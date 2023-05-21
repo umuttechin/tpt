@@ -37,6 +37,5 @@ else
        view_definition
 from   information_schema.views v
 where $condition
-order  by 1,
-          2;" 2>/dev/null || usage
+order  by 1, 2;" 2>/dev/null || usage
 fi
