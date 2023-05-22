@@ -59,8 +59,6 @@ select indexrelid::regclass as index_name,
        indisprimary         as isprimary,
        indisvalid           as isvalid
 from   pg_index
-where  indrelid in
-       (
-       select *
-       from   tableoids) ;" 2>/dev/null || usage
+where  indrelid in (select * from   tableoids)
+order by 1, 2;" 2>/dev/null || usage
 fi
