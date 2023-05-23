@@ -4,7 +4,7 @@ unset o OPTARG OPTIND
 
 usage() { echo "Usage Examples:" 1>&2;
           echo "./lsschsz.sql" 1>&2;
-          echo "./lsschsz.sql \"schema name = '\$schema_name'\"" 1>&2;
+          echo "./lsschsz.sql \"schema_name = '\$schema_name'\"" 1>&2;
           echo "";
  exit 1; }
 
@@ -46,7 +46,7 @@ from   (select pg_catalog.pg_namespace.nspname     as schema_name,
         from   pg_catalog.pg_class
         join pg_catalog.pg_namespace
         on relnamespace = pg_catalog.pg_namespace.oid) t
-	    where $condition     
+        where $condition     
 group  by schema_name, database_size
 order  by 2 desc; " 2>/dev/null || usage
 fi

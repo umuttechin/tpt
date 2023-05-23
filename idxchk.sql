@@ -4,11 +4,11 @@ unset o OPTARG OPTIND
 
 usage() { echo "Usage Examples:" 1>&2;
           echo "./idxchk.sql \"schema name = '\$schema_name'\"" 1>&2;
-		  echo "./idxchk.sql \"table name = '\$table_name'\"" 1>&2;
+		  echo "./idxchk.sql \"table_name = '\$table_name'\"" 1>&2;
 		  echo "./idxchk.sql \"index_name = '\$index_name'\"" 1>&2;
-		  echo "./idxchk.sql \"schemaname = '\$schema_name' and tablename = '\$table_name'\"" 1>&2;
-		  echo "./idxchk.sql \"table name = '\$table_name' and index_name = '\$index_name'\"" 1>&2;
-		  echo "./idxchk.sql \"schemaname = '\$schema_name' and tablename = '\$table_name' and index_name = '\$index_name'\"" 1>&2;
+		  echo "./idxchk.sql \"schemaname = '\$schema_name' and table_name = '\$table_name'\"" 1>&2;
+		  echo "./idxchk.sql \"table_name = '\$table_name' and index_name = '\$index_name'\"" 1>&2;
+		  echo "./idxchk.sql \"schemaname = '\$schema_name' and table_name = '\$table_name' and index_name = '\$index_name'\"" 1>&2;
           echo "";
  exit 1; }
 

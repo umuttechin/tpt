@@ -1,31 +1,47 @@
-psql -d $database -U $user -c "WITH inactive_connections AS (
-    SELECT
-        pid,
-        rank() over (partition by client_addr order by backend_start ASC) as rank
-    FROM 
-        pg_stat_activity
-    WHERE
-        -- Exclude the thread owned connection (ie no auto-kill)
-        pid <> pg_backend_pid( )
-    AND
-        -- Exclude known applications connections
-        application_name !~ '(?:psql)|(?:pgAdmin.+)'
-    AND
-        -- Include connections to the same database the thread is connected to
-        datname = current_database() 
-    AND
-        -- Include connections using the same thread username connection
-        usename = current_user 
-    AND
-        -- Include inactive connections only
-        state in ('idle', 'idle in transaction', 'idle in transaction (aborted)', 'disabled') 
-    AND
-        -- Include old connections (found with the state_change field)
-        current_timestamp - state_change > interval '5 minutes' 
+#!/bin/bash
+
+unset o OPTARG OPTIND
+
+usage() { echo "Usage Examples:" 1>&2;
+          echo "./ises.sql" 1>&2;
+          echo "./ises.sql \"time interval = '\$time_interval'\"" 1>&2;
+          echo "";
+ exit 1; }
+
+while getopts ":h" o; do
+    case "${o}" in
+        h)
+            usage
+                        ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+condition=$1
+
+if [ -z "${condition}" ]; then
+	psql -c "WITH inactive_connections AS (
+    SELECT pid, rank() over (partition by client_addr order by backend_start ASC) as rank
+    FROM pg_stat_activity
+    WHERE pid <> pg_backend_pid( )
+    AND state in ('idle', 'idle in transaction', 'idle in transaction (aborted)', 'disabled')
+    AND current_timestamp - state_change > interval '5 minutes'
 )
-SELECT
-    pid
-FROM
-    inactive_connections 
-WHERE
-    rank > 1;"
+SELECT pid, 'select pg_cancel_backend('||pid||');' as kill_command
+FROM inactive_connections
+WHERE rank > 1;"
+else
+    psql -c "WITH inactive_connections AS (
+    SELECT pid, rank() over (partition by client_addr order by backend_start ASC) as rank
+    FROM pg_stat_activity
+    WHERE pid <> pg_backend_pid( )
+    AND state in ('idle', 'idle in transaction', 'idle in transaction (aborted)', 'disabled')
+    AND current_timestamp - state_change > interval $1
+)
+SELECT pid, 'select pg_cancel_backend('||pid||');' as kill_command
+FROM inactive_connections
+WHERE rank > 1;" 2>/dev/null || usage
+fi
