@@ -3,10 +3,10 @@
 unset o OPTARG OPTIND
 
 usage() { echo "Usage Examples:" 1>&2;
-          echo "./lsfunc.sql" 1>&2;
-          echo "./lsfunc.sql \"nspname = '\$schema_name'\"" 1>&2;
-          echo "./lsfunc.sql \"proname = '\$function_name'\"" 1>&2;
-          echo "./lsfunc.sql \"nspname = '\$schema_name' and proname = '\$function_name'\"" 1>&2;
+          echo "./vwdef.sql" 1>&2;
+          echo "./vwdef.sql \"table_schema = '\$view_schema_name'\"" 1>&2;
+          echo "./vwdef.sql \"table_name = '\$view_name'\"" 1>&2;
+          echo "./vwdef.sql \"table_schema = '\$view_schema_name' and table_name = '\$view_name'\"" 1>&2;
           echo "";
  exit 1; }
 

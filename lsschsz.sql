@@ -24,7 +24,7 @@ condition=$1
 
 if [ -z "${condition}" ]; then
 	psql -c "select schema_name,
-       round(sum(table_size) / 1024, 2)                      as size_in_mb,
+       round(sum(table_size) / 1024 / 1024, 2)                      as size_in_mb,
        round(sum(table_size) * 100 / database_size, 2)      as percentage
 from   (select pg_catalog.pg_namespace.nspname     as schema_name,
         pg_relation_size(pg_catalog.pg_class.oid) as table_size,
@@ -37,7 +37,7 @@ group  by schema_name, database_size
 order  by 2 desc; "
 else
     psql -c "select schema_name,
-       round(sum(table_size) / 1024, 2)                      as size_in_mb,
+       round(sum(table_size) / 1024 / 1024, 2)                      as size_in_mb,
        round(sum(table_size) * 100 / database_size, 2)      as percentage
 from   (select pg_catalog.pg_namespace.nspname     as schema_name,
         pg_relation_size(pg_catalog.pg_class.oid) as table_size,

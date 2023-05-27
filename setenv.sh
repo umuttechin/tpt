@@ -2,7 +2,7 @@
 
 unset o OPTARG OPTIND database user host port pass_wd
 
-usage() { echo "Usage: source setenv -d <db_name> -u <username> [-w <password>] [-h <host>] [-p <port>]" 1>&2; }
+usage() { echo "Usage: source setenv.sh -d <db_name> -u <username> [-w <password>] [-h <host>] [-p <port>]" 1>&2; exit 1;}
 
 while getopts ":d:u:h:p:w" o; do
     case "${o}" in

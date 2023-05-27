@@ -3,10 +3,10 @@
 unset o OPTARG OPTIND
 
 usage() { echo "Usage Examples:" 1>&2;
-          echo "./lsfunc.sql" 1>&2;
-          echo "./lsfunc.sql \"schemaname = '\$schema_name'\"" 1>&2;
-          echo "./lsfunc.sql \"s.relname = '\$object_name'\"" 1>&2;
-          echo "./lsfunc.sql \"schemaname = '\$schema_name' and s.relname= '\$object_name'\"" 1>&2;
+          echo "./vcncs.sql" 1>&2;
+          echo "./vcncs.sql \"schemaname = '\$schema_name'\"" 1>&2;
+          echo "./vcncs.sql \"s.relname = '\$object_name'\"" 1>&2;
+          echo "./vcncs.sql \"schemaname = '\$schema_name' and s.relname= '\$object_name'\"" 1>&2;
           echo "";
  exit 1; }
 

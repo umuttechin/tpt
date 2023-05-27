@@ -157,7 +157,7 @@ from     (
                 where  level = max_level) as wait_chain
 group by path,
          cnt
-order by count(*) desc;"
+order by count(*) desc;" 2>/dev/null || usage
 else
     psql -c "with recursive search_wait_chain(ash_time, pid, blockerpid, wait_event_type, wait_event, level, path) as
 (
