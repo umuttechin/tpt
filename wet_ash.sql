@@ -4,7 +4,7 @@ unset o OPTARG OPTIND
 
 usage() { echo "Usage Examples:" 1>&2;
           echo "./aas.sql" 1>&2;
-          echo "./ass.sql \"time interval = '\$time_interval'\"" 1>&2;
+          echo "./ass.sql \"'\$time_interval'\"" 1>&2;
           echo "";
  exit 1; }
 

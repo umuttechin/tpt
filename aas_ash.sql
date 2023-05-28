@@ -4,7 +4,7 @@ unset o OPTARG OPTIND
 
 usage() { echo "Usage Examples:" 1>&2;
           echo "./aas_ash.sql" 1>&2;
-          echo "./ass_ash.sql \"time interval = '\$time_interval'\"" 1>&2;
+          echo "./ass_ash.sql \"'\$time_interval'\"" 1>&2;
           echo "";
  exit 1; }
 
@@ -28,7 +28,7 @@ if [ -z "${condition}" ]; then
        select *,
               ceil(extract(epoch from max(ash_time)over() - min(ash_time)over()))::numeric samples
        from   pg_active_session_history
-       where  ash_time >= current_timestamp - interval '200 minutes')
+       where  ash_time >= current_timestamp - interval '5 minutes')
 select   round(count(*) / samples, 2) as aas
 from     ash
 group by samples;"
