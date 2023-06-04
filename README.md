@@ -48,6 +48,17 @@ To find the query that has most aas on the ash:
 ./ass_ash.sql "time interval = '$time_interval'"
 ```
 
+Or, if you want to write your own predicates for different result set:
+
+```
+./ash.sql -h
+Usage Examples:
+./ash.sql
+./ash.sql "$cols $predicate $date1 $date2
+./ash.sql wait_event 1=1 "now()-interval '15 minutes'"  "now()"
+./ash.sql wait_event "datname='pgbench'" "now()-interval '15 minutes'" "now()"
+```
+![Alt text](images/aas_ash_example_2.png?raw=true "Optional Title" )
 
 
 
