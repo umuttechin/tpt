@@ -58,6 +58,13 @@ Usage Examples:
 ./ash.sql wait_event 1=1 "now()-interval '15 minutes'"  "now()"
 ./ash.sql wait_event "datname='pgbench'" "now()-interval '15 minutes'" "now()"
 ```
+
+For example;
+
+```
+./ash.sql usename,wait_event "datname='postgres'" "now()-interval '15 minutes'" "now()"
+```
+
 ![Alt text](images/aas_ash_example_2.png?raw=true "Optional Title" )
 
 
