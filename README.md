@@ -29,13 +29,15 @@ connection and relevant entries from setenv.sh script to make permanent.
 
 The database queries:
 
-```-h``` will always help you.
+```-h``` will always help you about the usage of the script.
 
 ```./aas_ash.sql -h
 Usage Examples:
 ./aas_ash.sql
 ./ass_ash.sql "'$time_interval'"
 ```
+
+
 
 
 
