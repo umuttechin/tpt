@@ -31,6 +31,8 @@ The database queries:
 
 ```-h``` will always help you about the usage of the script.
 
+For average active session(aas):
+
 ```./aas_ash.sql -h
 Usage Examples:
 ./aas_ash.sql
@@ -38,12 +40,19 @@ Usage Examples:
 ```
 ![Alt text](images/aas_ash_example_1.png?raw=true "Optional Title" )
 
+To find the query that has most aas on the ash:
+
+```
+./meq_ash.sql -h
+./aas_ash.sql
+./ass_ash.sql "time interval = '$time_interval'"
+```
 
 
 
 
 
 
-``````
+
 
 ``````
