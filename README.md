@@ -17,7 +17,7 @@ In order to begin to use scripts we need to prepare a psql database connection.
 Usage: source setenv.sh -d <db_name> -u <username> [-w <password>] [-h <host>] [-p <port>]
 ```
 
-A basic local connection is:
+A basic connection is:
 
 ```
 source setenv.sh -d postgres -u postgres -w
