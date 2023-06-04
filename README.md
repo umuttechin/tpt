@@ -16,3 +16,32 @@ In order to begin to use scripts we need to prepare a psql database connection.
 ./setenv.sh -h
 Usage: source setenv.sh -d <db_name> -u <username> [-w <password>] [-h <host>] [-p <port>]
 ```
+
+A basic local connection is:
+
+```
+source setenv.sh -d postgres -u postgres -w
+```
+
+will ask your user' s password. In addition, the default approach is using a hostname a port number, so every connection will
+trigger a host connection depending on your pg_hba file rules. So, you might want to delete host and port entries for a local
+connection and relevant entries from setenv.sh script to make permanent.
+
+The database queries:
+
+```-h``` will always help you.
+
+```./aas_ash.sql -h
+Usage Examples:
+./aas_ash.sql
+./ass_ash.sql "'$time_interval'"
+```
+
+
+
+
+
+
+``````
+
+``````
