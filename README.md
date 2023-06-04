@@ -36,7 +36,7 @@ Usage Examples:
 ./aas_ash.sql
 ./ass_ash.sql "'$time_interval'"
 ```
-![Alt text](images/aas_ash_example_1.png?raw=true "Optional Title" | width=100)
+![Alt text](images/aas_ash_example_1.png?raw=true| width=100 "Optional Title" )
 
 
 
