@@ -32,7 +32,7 @@ if [ -z "${condition}" ]; then
   query
   from pg_stat_activity
   where state = 'active'
-  and (now() - pg_stat_activity.query_start) > interval '1 minutes';"
+  and (now() - pg_stat_activity.query_start) > interval '10 minutes';"
 else
     psql -c "select
   pid,
