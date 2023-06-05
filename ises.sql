@@ -30,7 +30,7 @@ if [ -z "${condition}" ]; then
 from pg_stat_activity
 where pid <> pg_backend_pid()
   and state in ('idle', 'idle in transaction', 'idle in transaction (aborted)', 'disabled')
-  and current_timestamp - state_change > interval '5 minutes' order by 1;"
+  and current_timestamp - state_change > interval '10 minutes' order by 1;"
 else
     psql -c "select pid,
        query,
