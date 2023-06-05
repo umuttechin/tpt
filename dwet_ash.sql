@@ -28,7 +28,7 @@ if [ -z "${condition}" ]; then
        select *,
               ceil(extract(epoch from max(ash_time)over() - min(ash_time)over()))::numeric samples
        from   pg_active_session_history
-       where  ash_time >= current_timestamp - interval '5 minutes')
+       where  ash_time >= current_timestamp - interval '10 minutes')
 select   round(count(*) / sum(count(*))over(),2)*100 as percentage,
          round(count(*) / samples, 2) as aas,
          datname,
