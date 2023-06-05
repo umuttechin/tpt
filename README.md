@@ -44,8 +44,8 @@ To find the query that has most aas on the ash:
 
 ```
 ./meq_ash.sql -h
-./aas_ash.sql
-./ass_ash.sql "time interval = '$time_interval'"
+./meq_ash.sq
+./meq_ash.sq "time interval = '$time_interval'"
 ```
 
 Or, if you want to write your own predicates for different result set:
